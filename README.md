@@ -1,5 +1,4 @@
-# Silent_door 
-
+# Silent_door.c
 
 # Clássico backdoor, escrito na linguagem C.
  
@@ -39,17 +38,17 @@ Desenvolpment of a backdoor write in C.
 .... mais por vir. 
 
 
-# ./sdinstall.sh
+# ./sdinstall.sh | script to install and compile the source. 
 
-Usage: 
+# Usage: 
 
 1. nc -lvp 3389 
 
-2. run ./main_backdoor 
+2. run ./main_backdoor (or ./wine.01.2) 
 
 3. you have connection. 
 
-# can be very usefull | 4. python -m SimpleHTTPServer 3389 
+# can be very usefull. 4. python -m SimpleHTTPServer 3389 
 
 5. In this pont, just use your skills. 
 
