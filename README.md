@@ -24,6 +24,8 @@ In desenvolpment.
 
 (#) invisível, ao ser executado nada ocorre e os processos associam-se a processos originais do sistema
 
+(#) conexão remota 
+
 #######################################################################################################
 
 # Funções arbitrárias:
