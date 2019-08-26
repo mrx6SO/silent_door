@@ -74,6 +74,8 @@ Assim como ler a documentação do netcat: man netcat
 
 enfim, isso está sendo aprimorado 
 
+# Referenciem o meu github caso o redistribuam em outras fontes!
+
 Paz, 
 
 mrx6SO
