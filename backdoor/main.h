@@ -5,12 +5,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <signal.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
-#include <stdarg.h>
 #include <time.h>
 
 /* Sockets */
@@ -37,27 +35,7 @@
 void daemonize();
 void shell();
 
-//#define focusWin
-
-#define true 1
-#define false 0
-
-extern char *__progname;
-
-//extern char * szKeyString;
-
-
-/* struct of configurations to target. */
-
-  typedef struct {
-
-  int REMOTE_ADDR; /*remote_addr */
-  int REMOTE_PORT; /* remote port */
-
-
-  } Target;
-
-  //int x = true;
-
+// Variável global para armazenar o caminho do executável (argv[0])
+extern const char* g_executable_path;
 
 #endif // _MAIN_H

