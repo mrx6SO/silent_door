@@ -6,7 +6,7 @@ CC = gcc
 WINCC = x86_64-w64-mingw32-gcc
 
 # --- Nomes dos Executáveis ---
-TARGET_LINUX = silent_door_linux
+TARGET_LINUX = silent_door_linux # Mude em ambas as linhas o nome do arquivo gerado (opcional)
 TARGET_WINDOWS = silent_door.exe
 
 # --- Arquivos Fonte ---
